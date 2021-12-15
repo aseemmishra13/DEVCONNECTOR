@@ -6,7 +6,8 @@ const connectDB = async () =>{
 
     try{
         await mongoose.connect(db,{
-            useNewUrlParser: true
+            useNewUrlParser: true, // to fix deprecated warning
+           // useCreateIndex: true    // to fix deprecated warning
         });
         console.log('MongoDB connected');
 
