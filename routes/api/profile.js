@@ -136,7 +136,6 @@ router.get('/user/:user_id',async (req,res)=>{
         }
         
         })    
-// insert and update experience
 
 router.put('/experience',[auth,[check('title', 'Title is required').not().isEmpty(),
     check('company', 'company is required').not().isEmpty(),
@@ -150,22 +149,10 @@ router.put('/experience',[auth,[check('title', 'Title is required').not().isEmpt
 
     const {title,company,location,from,to,current,description } = req.body;
 
-    const newExp={}
-
-    if(title) newExp.title = title;
-    if(company) newExp.company = company;
-    if(location) newExp.location = location;
-    if(from) newExp.from = from;
-    if(to) newExp.to = to;
-    if(current) newExp.current = current;
-    if(description) newExp.description = description;
+    const newExp={title,company,location,from,to,current,description}
 
     try {
-        let profile = await Profile.findOne({user:req.user.id})
-        if(profile.experience){
-            profile = await Profile.findOneAndUpdate({user: req.user.id},{experience: newExp},{new:true})
-            return res.json(profile);
-        }
+        const profile = await Profile.findOne({user:req.user.id})
 
         profile.experience.unshift(newExp);
         await profile.save();
