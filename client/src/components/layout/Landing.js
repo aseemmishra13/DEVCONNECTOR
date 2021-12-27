@@ -1,11 +1,15 @@
 import React, {Fragment} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth';
 
 
-const Landing = ({auth:{isAuthenticated,loading},logout}) => {
+
+const Landing = ({auth:{isAuthenticated,loading}}) => {
+
+  if(isAuthenticated){
+    return <Navigate to ='/dashboard' />
+  }
   const authLinks = (
     <div className="landing-inner">
             <h1 className="x-large">Developer Connector</h1>
@@ -41,11 +45,13 @@ const Landing = ({auth:{isAuthenticated,loading},logout}) => {
     )
 }
 Landing.propTypes={
-  logout:PropTypes.func.isRequired,
+ 
   auth:PropTypes.object.isRequired,
 }
+  
 const mapStateToProps=state=>({
   auth: state.auth
+  
 })
 
-export default connect(mapStateToProps,{logout})(Landing)
+export default connect(mapStateToProps)(Landing)

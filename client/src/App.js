@@ -13,6 +13,7 @@ import store from './store'
 import Alert from './components/layout/Alert';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import CreateProfile from './components/Profile-form/CreateProfile';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -45,6 +46,10 @@ return (
             <Route
             path="/dashboard"
             element={<PrivateRoute component={Dashboard} />}
+          />
+          <Route
+            path="/create-profile"
+            element={<PrivateRoute component={CreateProfile} />}
           />
           </Routes>
       
