@@ -7,6 +7,9 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import EditProfile from './components/Profile-form/EditProfile';
+import AddExperience from './components/Profile-form/AddExperience';
+
 import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider} from 'react-redux'
 import store from './store'
@@ -14,6 +17,7 @@ import Alert from './components/layout/Alert';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import CreateProfile from './components/Profile-form/CreateProfile';
+import AddEducation from './components/Profile-form/AddEducation';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -43,14 +47,11 @@ return (
           <Routes>
             <Route exact path = "/register" element = {<Register />} />
             <Route exact path = "/login" element = {<Login />} />
-            <Route
-            path="/dashboard"
-            element={<PrivateRoute component={Dashboard} />}
-          />
-          <Route
-            path="/create-profile"
-            element={<PrivateRoute component={CreateProfile} />}
-          />
+            <Route path="/dashboard" element={<PrivateRoute component={Dashboard} />} />
+            <Route path="/create-profile" element={<PrivateRoute component={CreateProfile} />}/>
+            <Route path="/edit-profile" element={<PrivateRoute component={EditProfile} />}/>
+            <Route path="/add-experience" element={<PrivateRoute component={AddExperience} />}/>
+            <Route path="/add-education" element={<PrivateRoute component={AddEducation} />}/>
           </Routes>
       
       </section>
