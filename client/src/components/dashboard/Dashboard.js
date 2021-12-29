@@ -8,6 +8,7 @@ import DashboardActions from './DashboardActions'
 import Experience from './Experience'
 import Education from './Education'
 import { deleteAccount } from '../../actions/profile'
+import ProfileGithub from '../profile/ProfileGithub'
 
 
 const Dashboard = ({getCurrentProfile,auth:{user},deleteAccount,profile:{profile,loading}})=> {
@@ -20,6 +21,7 @@ const Dashboard = ({getCurrentProfile,auth:{user},deleteAccount,profile:{profile
             <DashboardActions/>
         <Experience experience={profile.experience}/>
         <Education education={profile.education}/>
+        {profile.githubusername &&(<ProfileGithub username={profile.githubusername}/>)}
         <div className='my-2'>
             <button className='btn btn-danger' onClick={()=>deleteAccount()}><i className='fas fa-user-minus'></i></button>
         </div>
