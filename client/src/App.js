@@ -9,7 +9,8 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import EditProfile from './components/Profile-form/EditProfile';
 import AddExperience from './components/Profile-form/AddExperience';
-
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { Provider} from 'react-redux'
 import store from './store'
@@ -45,8 +46,10 @@ return (
         <Alert />
         
           <Routes>
-            <Route exact path = "/register" element = {<Register />} />
-            <Route exact path = "/login" element = {<Login />} />
+            <Route exact path = "register" element = {<Register />} />
+            <Route exact path = "login" element = {<Login />} />
+            <Route exact path = "profiles" element = {<Profiles />} />
+            <Route exact path = "profile/:id" element = {<Profile />} />
             <Route path="/dashboard" element={<PrivateRoute component={Dashboard} />} />
             <Route path="/create-profile" element={<PrivateRoute component={CreateProfile} />}/>
             <Route path="/edit-profile" element={<PrivateRoute component={EditProfile} />}/>

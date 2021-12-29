@@ -51,7 +51,7 @@ const onChange = e => setFormData({...formData,[e.target.name]:e.target.value})
           <input type="date" name="from" value={from} onChange={e=> onChange(e)}/>
         </div>
          <div className="form-group">
-          <p><input type="checkbox" name="current" value={current} checked ={current} onChange={e=> {setFormData({...formData, current: !current}); toggleDisable(!toDateDisabled)}} /> Current Job</p>
+          <p><input type="checkbox" name="current" value={current} checked ={current} onChange={e=> {setFormData({...formData, current: !current}); toggleDisable(!toDateDisabled)}} /> Current</p>
         </div>
         <div className="form-group">
           <h4>To Date</h4>
