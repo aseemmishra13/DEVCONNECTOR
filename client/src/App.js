@@ -19,16 +19,18 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import CreateProfile from './components/Profile-form/CreateProfile';
 import AddEducation from './components/Profile-form/AddEducation';
-
-if(localStorage.token){
-  setAuthToken(localStorage.token)
-}
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 
 
 
 const App=()=> {
 
 useEffect(()=>{
+  if (localStorage.token) {
+    // if there is a token set axios headers for all requests
+    setAuthToken(localStorage.token);
+  }
   store.dispatch(loadUser())
 },[])
 
@@ -55,6 +57,9 @@ return (
             <Route path="/edit-profile" element={<PrivateRoute component={EditProfile} />}/>
             <Route path="/add-experience" element={<PrivateRoute component={AddExperience} />}/>
             <Route path="/add-education" element={<PrivateRoute component={AddEducation} />}/>
+            <Route path="/posts" element={<PrivateRoute component={Posts} />}/>
+            <Route path="post/:id" element={<PrivateRoute component={Post} />}/>
+         
           </Routes>
       
       </section>
